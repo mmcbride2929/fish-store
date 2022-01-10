@@ -10,7 +10,7 @@ import styled from 'styled-components'
 import { AiFillEye } from 'react-icons/ai'
 import { serverTimestamp, setDoc, doc } from 'firebase/firestore'
 import { toast } from 'react-toastify'
-import AltHeader from '../Components/NavComps/AltHeader'
+import AltNav from '../Components/NavComps/AltNav'
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false)
@@ -70,7 +70,7 @@ const SignUp = () => {
 
   return (
     <Main>
-      <AltHeader />
+      <AltNav />
       <SignUpContainer>
         <header>Create Account</header>
         <Form onSubmit={onSubmit}>

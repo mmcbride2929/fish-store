@@ -9,8 +9,15 @@ import { getAuth } from 'firebase/auth'
 
 const Navbar = () => {
   // getting state and variables from context
-  const { navbarActive, sidebarActive, menuActive, handleSidebar, signedIn } =
-    useContext(Context)
+  const {
+    navbarActive,
+    sidebarActive,
+    menuActive,
+    handleSidebar,
+    signedIn,
+    setSignedIn,
+    setUser,
+  } = useContext(Context)
 
   // initializing auth object
   const auth = getAuth()
@@ -24,6 +31,8 @@ const Navbar = () => {
   }
 
   const handleSignOut = () => {
+    setSignedIn(false)
+    setUser('')
     auth.signOut()
     navigate('/')
   }
@@ -141,6 +150,10 @@ const LogoContainer = styled.div`
     border-radius: 10px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
       rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+    @media (max-width: 450px) {
+      width: 175px;
+    }
   }
 `
 

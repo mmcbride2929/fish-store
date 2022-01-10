@@ -1,7 +1,14 @@
-import React from 'react'
+import styled from 'styled-components'
+import CartHeader from '../Components/CartComps/CartHeader'
 
 const Cart = () => {
-  return <div>CART</div>
+  return (
+    <CartContainer>
+      <CartHeader />
+    </CartContainer>
+  )
 }
 
 export default Cart
+
+const CartContainer = styled.div``

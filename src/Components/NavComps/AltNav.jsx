@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import logo from '../../img/logo.png'
 import { useNavigate } from 'react-router-dom'
 
-const AltHeader = () => {
+const AltNav = () => {
   // navigate with react-router
   const navigate = useNavigate()
 
@@ -13,7 +13,7 @@ const AltHeader = () => {
   )
 }
 
-export default AltHeader
+export default AltNav
 
 const Nav = styled.nav`
   width: 100%;

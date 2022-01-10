@@ -26,6 +26,19 @@ export const Provider = ({ children }) => {
   const [signedIn, setSignedIn] = useState(false)
   const [user, setUser] = useState(null)
 
+  // CART CONTEXT ***********************************
+  const [saltWater, setSaltWater] = useState(false)
+
+  // toggle between salt and freshwater
+  const handleToggle = (e) => {
+    if (e.target.innerText === 'Salt') {
+      setSaltWater(true)
+    }
+    if (e.target.innerText === 'Fresh') {
+      setSaltWater(false)
+    }
+  }
+
   return (
     <Context.Provider
       value={{
@@ -34,6 +47,9 @@ export const Provider = ({ children }) => {
         sidebarActive,
         signedIn,
         user,
+        saltWater,
+
+        handleToggle,
         setUser,
         setSignedIn,
         handleSidebar,

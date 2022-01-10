@@ -5,7 +5,7 @@ import { AiFillEye } from 'react-icons/ai'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import Context from '../Context/Context'
 import { toast } from 'react-toastify'
-import AltHeader from '../Components/NavComps/AltHeader'
+import AltNav from '../Components/NavComps/AltNav'
 
 const SignIn = () => {
   // component context
@@ -53,7 +53,7 @@ const SignIn = () => {
 
   return (
     <>
-      <AltHeader />
+      <AltNav />
       <Main>
         <SignInContainer>
           <header>Sign In</header>
