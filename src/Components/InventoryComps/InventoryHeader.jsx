@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import FishToggle from './FishToggle'
 
-const CartHeader = () => {
+const InventoryHeader = () => {
   return (
     <Header>
       <HeaderContainer>
@@ -14,7 +14,7 @@ const CartHeader = () => {
   )
 }
 
-export default CartHeader
+export default InventoryHeader
 
 const Header = styled.header`
   display: flex;

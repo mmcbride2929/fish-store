@@ -92,7 +92,6 @@ const NavContainer = styled.div`
     text-align: center;
     border: 1px solid #e8e8e8;
     margin-bottom: 20px;
-    padding: 5px 14px;
     border-radius: 5px;
 
     :hover {
@@ -102,10 +101,15 @@ const NavContainer = styled.div`
       box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
         rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     }
+
+    p {
+      width: 100px;
+      padding: 5px 14px;
+    }
   }
 
   @media (max-width: 768px) {
-    height: 435px;
+    height: 415px;
     li {
       margin-bottom: 45px;
     }
@@ -122,5 +126,5 @@ const NavContainer = styled.div`
 `
 
 const ContentWrapper = styled.div`
-  padding: 60px;
+  padding: 50px 40px;
 `

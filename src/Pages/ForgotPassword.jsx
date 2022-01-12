@@ -10,6 +10,7 @@ const ForgotPassword = () => {
 
   const navigate = useNavigate()
 
+  // getting users email
   const onChange = (e) => {
     setEmail(e.target.value)
   }
@@ -32,7 +33,6 @@ const ForgotPassword = () => {
       <AltNav />
       <Main>
         <header>Forgot Password</header>
-
         <Form onSubmit={onSubmit}>
           <p>Email Address</p>
           <EmailInput

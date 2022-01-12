@@ -26,8 +26,10 @@ export const Provider = ({ children }) => {
   const [signedIn, setSignedIn] = useState(false)
   const [user, setUser] = useState(null)
 
-  // CART CONTEXT ***********************************
+  // INVENTORY CONTEXT ***********************************
   const [saltWater, setSaltWater] = useState(false)
+  const [inventory, setInventory] = useState([])
+  const [loading, setLoading] = useState(true)
 
   // toggle between salt and freshwater
   const handleToggle = (e) => {
@@ -48,10 +50,13 @@ export const Provider = ({ children }) => {
         signedIn,
         user,
         saltWater,
-
-        handleToggle,
+        inventory,
+        loading,
+        setLoading,
+        setInventory,
         setUser,
         setSignedIn,
+        handleToggle,
         handleSidebar,
         handleClose,
       }}

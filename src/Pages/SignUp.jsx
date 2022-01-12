@@ -40,7 +40,7 @@ const SignUp = () => {
       // initialize auth object
       const auth = getAuth()
 
-      // registering user, returns promite
+      // registering user, returns promise
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
@@ -54,7 +54,7 @@ const SignUp = () => {
         displayName: name,
       })
 
-      // copy of formata object
+      // copy of format object
       const formDataCopy = { ...formData }
       delete formDataCopy.password
       formDataCopy.timestamp = serverTimestamp()

@@ -8,14 +8,14 @@ import { toast } from 'react-toastify'
 import AltNav from '../Components/NavComps/AltNav'
 
 const SignIn = () => {
-  // component context
+  // component state
   const [showPassword, setShowPassword] = useState(false)
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   })
 
-  //destructuring4b
+  //destructuring
   const { email, password } = formData
   const { setSignedIn, setUser } = useContext(Context)
 
@@ -35,12 +35,13 @@ const SignIn = () => {
     try {
       const auth = getAuth()
 
+      //sign in
       const userCredential = await signInWithEmailAndPassword(
         auth,
         email,
         password
       )
-
+      // if user exists
       if (userCredential.user) {
         setSignedIn(true)
         setUser(userCredential.user.displayName)
