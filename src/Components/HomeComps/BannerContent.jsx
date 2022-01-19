@@ -24,27 +24,24 @@ export default BannerContent
 const ContentWrapper = styled.div`
   width: 350px;
   margin: 10px;
-  display:flex;
-  justify-content:space-between;
+  display: flex;
+  justify-content: space-between;
 
-@media (max-width: 500px) {
-  flex-direction: column;
-  width: 315px;
-}
+  @media (max-width: 500px) {
+    flex-direction: column;
+    width: 315px;
+  }
 
   svg {
-    font-size 2rem;
+    font-size: 2rem;
   }
 
   h1 {
-    font-size:1rem;
+    font-size: 1rem;
     margin: 5px;
   }
 
-p {
-  font-size:0.7rem;
-    
-}
-
-
+  p {
+    font-size: 0.7rem;
+  }
 `

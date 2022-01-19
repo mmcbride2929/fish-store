@@ -19,7 +19,7 @@ const Main = styled.main`
   height: auto;
   padding: 50px;
   background-color: #e8e8e9;
-  color: #e8e8e9;
+  color: #e8e8e8;
   align-items: center;
   justify-content: center;
 

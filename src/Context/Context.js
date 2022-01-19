@@ -30,14 +30,53 @@ export const Provider = ({ children }) => {
   const [saltWater, setSaltWater] = useState(false)
   const [inventory, setInventory] = useState([])
   const [loading, setLoading] = useState(true)
+  const [activeFish, setActiveFish] = useState({
+    name: '',
+    price: 0,
+    water: '',
+    photo: 'loading',
+    lifeExpectancy: '',
+    diet: '',
+    currentAge: '',
+    averageSize: '',
+  })
 
   // toggle between salt and freshwater
   const handleToggle = (e) => {
     if (e.target.innerText === 'Salt') {
       setSaltWater(true)
+      setActiveFish({
+        name: 'Trigger',
+        price: 41,
+        water: 'salt',
+        photo: 'trigger',
+        lifeExpectancy: '8-12 years',
+        diet: 'carnivore',
+        currentAge: 'adult',
+        averageSize: '36"',
+      })
     }
     if (e.target.innerText === 'Fresh') {
       setSaltWater(false)
+      setDefaultFish(e.target.innerText)
+    }
+  }
+
+  // setting default fresh and saltwater fish
+  const setDefaultFish = (water) => {
+    if (water === 'Fresh') {
+      const inventoryCopy = [...inventory]
+      const defaultFishFresh = inventoryCopy.find(
+        (fish) => fish.water === 'fresh'
+      )
+      setActiveFish(defaultFishFresh)
+    }
+    if (water === 'Salt') {
+      const inventoryCopy = [...inventory]
+      const defaultFishSalt = inventoryCopy.find(
+        (fish) => fish.water === 'salt'
+      )
+      setActiveFish(defaultFishSalt)
     }
   }
 
@@ -52,6 +91,8 @@ export const Provider = ({ children }) => {
         saltWater,
         inventory,
         loading,
+        activeFish,
+        setActiveFish,
         setLoading,
         setInventory,
         setUser,

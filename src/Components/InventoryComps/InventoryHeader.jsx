@@ -24,6 +24,12 @@ const Header = styled.header`
 
 const HeaderContainer = styled.div`
   padding: 15px;
+
+  @media (max-width: 350px) {
+    h1 {
+      font-size: 1.4rem;
+    }
+  }
 `
 
 const SortContainer = styled.div`
