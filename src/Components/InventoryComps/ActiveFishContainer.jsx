@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import { useContext } from 'react'
 import Context from '../../Context/Context'
 
-const ActiveFish = () => {
-  const { activeFish, loading } = useContext(Context)
+const ActiveFishContainer = () => {
+  const { activeFish, loading, inventory } = useContext(Context)
   const { name, photo, averageSize, currentAge, diet, lifeExpectancy, price } =
     activeFish
 
@@ -14,7 +14,7 @@ const ActiveFish = () => {
           <>loading</>
         ) : (
           <ContentContainer>
-            <LeftContainer>
+            <TopContainer>
               <img
                 src={require(`../../img/fish/${photo}.jpg`)}
                 alt="fish-photo"
@@ -22,8 +22,8 @@ const ActiveFish = () => {
               <h3>
                 {name} - ${price}
               </h3>
-            </LeftContainer>
-            <RightContainer>
+            </TopContainer>
+            <BottomContainer>
               <div>
                 <h5>Current Age</h5>
                 <h5>{currentAge}</h5>
@@ -40,7 +40,7 @@ const ActiveFish = () => {
                 <h5>Life Expectancy</h5>
                 <h5>{lifeExpectancy}</h5>
               </div>
-            </RightContainer>
+            </BottomContainer>
             <button>Add to Cart</button>
           </ContentContainer>
         )}
@@ -49,7 +49,7 @@ const ActiveFish = () => {
   )
 }
 
-export default ActiveFish
+export default ActiveFishContainer
 
 const Section = styled.section`
   height: auto;
@@ -95,7 +95,7 @@ const DisplayContainer = styled.div`
   }
 `
 
-const LeftContainer = styled.div`
+const TopContainer = styled.div`
   text-align: center;
 
   h3 {
@@ -107,7 +107,7 @@ const LeftContainer = styled.div`
     width: 100%;
   }
 `
-const RightContainer = styled.div`
+const BottomContainer = styled.div`
   width: 100%;
 
   padding: 5px 25px;

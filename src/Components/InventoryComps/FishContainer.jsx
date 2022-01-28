@@ -1,31 +1,10 @@
 import Context from '../../Context/Context'
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import styled from 'styled-components'
-import { db } from '../../Firebase/Firebase.config'
-import { collection, getDocs, addDoc } from 'firebase/firestore'
 import Fish from './Fish'
 
 const FishContainer = () => {
-  const { setInventory, inventory, saltWater, setLoading, loading } =
-    useContext(Context)
-
-  // fetching inventory from fish collection
-  useEffect(() => {
-    // inv ref from fish coll
-    const inventoryCollectionRef = collection(db, 'fish')
-
-    const fetchInventory = async () => {
-      const data = await getDocs(inventoryCollectionRef)
-
-      // looping through docs, returning objs to inv arr
-      setInventory(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-    }
-
-    fetchInventory()
-
-    //set loading to false
-    setLoading(false)
-  }, [])
+  const { inventory, saltWater, loading } = useContext(Context)
 
   // cloning inventory state
   const inventoryCopy = [...inventory]
@@ -49,6 +28,7 @@ const FishContainer = () => {
                 })}
         </InventoryContainer>
       )}
+      {/* <button onClick={createPost}>sdfsdfsdf</button> */}
     </ContentWrapper>
   )
 }
@@ -57,6 +37,8 @@ export default FishContainer
 
 const ContentWrapper = styled.div`
   height: auto;
+  display: flex;
+  justify-content: center;
   padding: 15px;
   background-color: #e8e8e8;
   margin: 0px 15px;
@@ -65,9 +47,10 @@ const ContentWrapper = styled.div`
 
 const LoadingContainer = styled.div``
 const InventoryContainer = styled.div`
+  max-width: 900px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, 1fr);
-  grid-gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 17rem));
+  grid-gap: 20px;
   justify-content: center;
 
   .active {
@@ -79,18 +62,3 @@ const InventoryContainer = styled.div`
     }
   }
 `
-
-// const [newPost, setNewPost] = useState({
-//   averaSize: '',
-//   currentAge: '',
-//   diet: '',
-//   lifeExpectancy: '',
-//   name: '',
-//   photo: '',
-//   price: 0,
-//   water: '',
-// })
-// const createPost = async () => {
-//   await addDoc(inventoryCollectionRef, newPost)
-// }
-// <button onClick={createPost}>sdfsdfsdf</button>

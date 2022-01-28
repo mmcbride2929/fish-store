@@ -46,30 +46,14 @@ const FishContainer = styled.div`
       color: #e8e8e8;
     }
   }
-
-  @media (min-width: 374px) {
-    width: 100%;
-  }
 `
 // category item
 const ImageContainer = styled.div`
-  width: 100%;
-
   img {
     border-radius: 5px 5px 0px 0px;
-    height: auto;
-    min-height: 150px;
-    max-height: 250px;
-    width: 275px;
-  }
-
-  @media (min-width: 374px) {
-    img {
-      width: 100%;
-    }
-  }
-
-  @media (min-width: 500px) {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
   }
 `
 

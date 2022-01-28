@@ -93,6 +93,7 @@ export const Provider = ({ children }) => {
         loading,
         activeFish,
         setActiveFish,
+        setDefaultFish,
         setLoading,
         setInventory,
         setUser,
