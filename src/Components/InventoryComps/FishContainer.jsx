@@ -12,7 +12,10 @@ const FishContainer = () => {
   return (
     <ContentWrapper>
       {loading ? (
-        <LoadingContainer>loading....</LoadingContainer>
+        <LoadingContainer>
+          <h2>Loading</h2>
+          <span>One Moment...</span>
+        </LoadingContainer>
       ) : (
         <InventoryContainer>
           {saltWater
@@ -28,7 +31,6 @@ const FishContainer = () => {
                 })}
         </InventoryContainer>
       )}
-      {/* <button onClick={createPost}>sdfsdfsdf</button> */}
     </ContentWrapper>
   )
 }
@@ -37,21 +39,32 @@ export default FishContainer
 
 const ContentWrapper = styled.div`
   height: auto;
-  display: flex;
-  justify-content: center;
   padding: 15px;
-  background-color: #e8e8e8;
+  background: #e8e8e8;
   margin: 0px 15px;
   margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
 `
 
-const LoadingContainer = styled.div``
+const LoadingContainer = styled.div`
+  color: black;
+  letter-spacing: 1px;
+  text-align: center;
+
+  h2 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    padding: 20px;
+  }
+`
+
 const InventoryContainer = styled.div`
-  max-width: 900px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(9rem, 17rem));
-  grid-gap: 20px;
-  justify-content: center;
+  max-width: 950px;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+  justify-content: space-between;
 
   .active {
     background-color: #006198;
@@ -61,4 +74,14 @@ const InventoryContainer = styled.div`
       color: #e8e8e8;
     }
   }
+
+  @media (max-width: 650px) {
+    flex-flow: column nowrap;
+    align-items: center;
+  }
 `
+
+/* display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 17rem));
+  grid-gap: 20px;
+  justify-content: center; */

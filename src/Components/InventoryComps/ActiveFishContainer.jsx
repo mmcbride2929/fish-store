@@ -1,17 +1,34 @@
 import styled from 'styled-components'
 import { useContext } from 'react'
 import Context from '../../Context/Context'
+import { TiPlus, TiMinus } from 'react-icons/ti'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 const ActiveFishContainer = () => {
-  const { activeFish, loading, inventory } = useContext(Context)
+  const { activeFish, loading, quantity, handleQuantity, signedIn } =
+    useContext(Context)
+
   const { name, photo, averageSize, currentAge, diet, lifeExpectancy, price } =
     activeFish
+
+  // navigate with react-router
+  const navigate = useNavigate()
+
+  const handleNotSignedIn = () => {
+    if (signedIn === false) {
+      navigate('/sign-in')
+    }
+  }
 
   return (
     <Section>
       <DisplayContainer>
         {loading ? (
-          <>loading</>
+          <LoadingContainer>
+            {' '}
+            <h2>Loading</h2>
+            <span>One Moment...</span>
+          </LoadingContainer>
         ) : (
           <ContentContainer>
             <TopContainer>
@@ -41,7 +58,16 @@ const ActiveFishContainer = () => {
                 <h5>{lifeExpectancy}</h5>
               </div>
             </BottomContainer>
-            <button>Add to Cart</button>
+            <QuantityContainer>
+              <TiPlus className="plus" onClick={handleQuantity} />
+
+              <span>{quantity}</span>
+
+              <TiMinus className="minus" onClick={handleQuantity} />
+            </QuantityContainer>
+            <button onClick={signedIn ? console.log('f') : handleNotSignedIn}>
+              Add to Cart
+            </button>
           </ContentContainer>
         )}
       </DisplayContainer>
@@ -65,7 +91,6 @@ const Section = styled.section`
 `
 
 const ContentContainer = styled.div`
-  width: 100%;
   max-width: 400px;
   background: #006198;
 `
@@ -77,7 +102,7 @@ const DisplayContainer = styled.div`
   text-align: center;
 
   button {
-    margin: 15px;
+    margin: 10px;
     height: 30px;
     width: 100px;
     border: 1px solid #e8e8e8;
@@ -104,13 +129,14 @@ const TopContainer = styled.div`
   }
 
   img {
+    height: 250px;
     width: 100%;
+    object-fit: cover;
   }
 `
 const BottomContainer = styled.div`
   width: 100%;
-
-  padding: 5px 25px;
+  padding: 5px 40px;
   text-transform: uppercase;
   letter-spacing: 0.7px;
 
@@ -123,7 +149,37 @@ const BottomContainer = styled.div`
     justify-content: space-between;
   }
 
-  @media (min-width: 376px) {
-    padding: 5px 50px;
+  @media (max-width: 376px) {
+    padding: 5px 20px;
+  }
+`
+
+const QuantityContainer = styled.div`
+  margin-top: 15px;
+
+  span {
+    font-size: 1.1rem;
+  }
+
+  svg {
+    font-size: 1.5rem;
+    padding: 11px 5px 0 5px;
+    margin: 5px;
+    vertical-align: bottom;
+
+    :hover {
+      cursor: pointer;
+      color: #00334e;
+    }
+  }
+`
+const LoadingContainer = styled.div`
+  color: black;
+  letter-spacing: 1px;
+
+  h2 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    padding: 20px;
   }
 `

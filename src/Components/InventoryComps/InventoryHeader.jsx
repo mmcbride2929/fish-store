@@ -3,7 +3,7 @@ import FishToggle from './FishToggle'
 
 const InventoryHeader = () => {
   return (
-    <Header>
+    <Header id="hero">
       <HeaderContainer>
         <h1>Inventory</h1>
       </HeaderContainer>

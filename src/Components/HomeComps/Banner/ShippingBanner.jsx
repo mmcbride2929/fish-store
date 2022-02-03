@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import BannerText from './BannerText'
-import BannerContent from './BannerContent'
+import BannerText from '../Banner/BannerText'
+import BannerContent from '../Banner/BannerContent'
 
 const ShippingBanner = () => {
   return (
@@ -16,8 +16,10 @@ export default ShippingBanner
 
 const Main = styled.main`
   display: flex;
+  padding: 25px;
+  margin: 20px 15px 0 15px;
+  margin-bottom: 20px;
   height: auto;
-  padding: 50px;
   background-color: #e8e8e9;
   color: #e8e8e8;
   align-items: center;

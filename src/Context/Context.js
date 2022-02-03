@@ -30,6 +30,7 @@ export const Provider = ({ children }) => {
   const [saltWater, setSaltWater] = useState(false)
   const [inventory, setInventory] = useState([])
   const [loading, setLoading] = useState(true)
+  const [quantity, setQuantity] = useState(1)
   const [activeFish, setActiveFish] = useState({
     name: '',
     price: 0,
@@ -45,16 +46,7 @@ export const Provider = ({ children }) => {
   const handleToggle = (e) => {
     if (e.target.innerText === 'Salt') {
       setSaltWater(true)
-      setActiveFish({
-        name: 'Trigger',
-        price: 41,
-        water: 'salt',
-        photo: 'trigger',
-        lifeExpectancy: '8-12 years',
-        diet: 'carnivore',
-        currentAge: 'adult',
-        averageSize: '36"',
-      })
+      setDefaultFish(e.target.innerText)
     }
     if (e.target.innerText === 'Fresh') {
       setSaltWater(false)
@@ -66,17 +58,28 @@ export const Provider = ({ children }) => {
   const setDefaultFish = (water) => {
     if (water === 'Fresh') {
       const inventoryCopy = [...inventory]
-      const defaultFishFresh = inventoryCopy.find(
-        (fish) => fish.water === 'fresh'
-      )
+      const defaultFishFresh = inventoryCopy
+        .reverse() // reverse is only so top fish in inv isnt active by def
+        .find((fish) => fish.water === 'fresh')
       setActiveFish(defaultFishFresh)
     }
     if (water === 'Salt') {
       const inventoryCopy = [...inventory]
-      const defaultFishSalt = inventoryCopy.find(
-        (fish) => fish.water === 'salt'
-      )
+      const defaultFishSalt = inventoryCopy
+        .reverse() // reverse is only so top fish in inv isnt active by def
+        .find((fish) => fish.water === 'salt')
       setActiveFish(defaultFishSalt)
+    }
+  }
+
+  // handling quantity of fish added to cart
+  const handleQuantity = (e) => {
+    if (e.target.className.baseVal === 'minus' && quantity > 1) {
+      setQuantity(quantity - 1)
+    }
+
+    if (e.target.className.baseVal === 'plus' && quantity < 12) {
+      setQuantity(quantity + 1)
     }
   }
 
@@ -92,6 +95,7 @@ export const Provider = ({ children }) => {
         inventory,
         loading,
         activeFish,
+        quantity,
         setActiveFish,
         setDefaultFish,
         setLoading,
@@ -101,6 +105,7 @@ export const Provider = ({ children }) => {
         handleToggle,
         handleSidebar,
         handleClose,
+        handleQuantity,
       }}
     >
       {children}

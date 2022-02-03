@@ -99,7 +99,7 @@ export default Navbar
 const Nav = styled.nav`
   margin: 0 auto;
   padding: 20px;
-  width: 100%;
+  max-width: 1070px;
   position: relative;
   height: 60px;
   background-color: #006198;
